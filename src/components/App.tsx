@@ -5,7 +5,7 @@ import TopBar from "./TopBar/TopBar";
 function App() {
   return (
     <div id="app" data-testid="app">
-      <TopBar title="Battleship" />
+      <TopBar title="BATTLESHIP" />
     </div>
   );
 }

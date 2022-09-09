@@ -10,7 +10,7 @@ function TopBar(props) {
         <h1>{props.title}</h1>
       </div>
       <div className={`${styles.mono} ${styles.inline}`}>
-        <h3>Score: {props.score}</h3>
+        <button>New Game</button>
       </div>
     </nav>
   );
@@ -18,7 +18,6 @@ function TopBar(props) {
 
 TopBar.propTypes = {
   title: PropTypes.string,
-  score: PropTypes.string,
 };
 
 export default TopBar;
