@@ -18,33 +18,63 @@ const BoardFactory = (ownerName) => {
     return shots;
   };
 
-  function placeShip(name, start, end) {
+  function placeShip(name, length, start, end) {
+    if (start.x !== end.x || start.y !== end.y) {
+      throw new Error("Can't place ships diagonally");
+    }
+
+    const getMinMax = () => {
+      const max = Math.max[(start.y, end.y)];
+      const min = Math.min[(start.y, end.y)];
+      if (max > 10) {
+        throw new Error("No room!");
+      }
+      return { min, max };
+    };
+
+    try {
+      if (start.x === end.x) {
+        const { min, max } = getMinMax(start.y, end.y);
+        for (let i = min; i <= max; i += 1) {
+          shipLocations[`${start.x}, ${i}`] = name;
+        }
+      }
+
+      if (start.y === end.y) {
+        const { min, max } = getMinMax(start.x, end.x);
+        for (let i = min; i <= max; i += 1) {
+          shipLocations[`${i}, ${start.y}`] = name;
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+
+    shipyard[name] = newShip(name, length);
   }
 
   function recieveAttack(coord) {
     const coordStr = `${coord.x}, ${coord.y}`;
 
-    if (Object.hasOwnProperty(coordStr)) {
+    if (shots.hasOwnProperty(coordStr)) {
       throw new Error("already shot here!");
     }
 
     if (shipLocations.hasOwnProperty(coordStr)) {
-      shots.coordStr = 'hit'
-
-      }
-      return "hit";
+      shipyard.name.directHit();
     }
     return "miss";
   }
 
   function isFleetSunk() {
-    let allShipsSunk = true;
-    for (const key in shipyard) {
-      if (shipyard[key].isSunk() === false) {
-        allShipsSunk = false;
+    let allSunk = true;
+    for (const ship in shipyard) {
+      if (!ship.isSunk()) {
+        allSunk = false;
       }
     }
-    return allShipsSunk;
+    return allSunk;
   }
 
   return {
@@ -56,14 +86,5 @@ const BoardFactory = (ownerName) => {
     getShipLocations,
   };
 };
-
-// const bobsBoard = newBoard("bob");
-// bobsBoard.placeShip("carrier", "1-1", "1-5");
-// bobsBoard.placeShip("battleship", "2-1", "2-4");
-// bobsBoard.placeShip("cruiser", "3-2", "3-4");
-// bobsBoard.placeShip("submarine", "4-1", "4-3");
-// bobsBoard.placeShip("destroyer", "6-2", "6-3");
-
-// bobsBoard.nextShip();
 
 export default BoardFactory;
