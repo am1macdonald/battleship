@@ -1,16 +1,22 @@
 import newBoard from "./boardFactory";
 import { ComputerMover, Player } from "./playerFactory";
+import { getShips as shipList } from "./utilities/shipList";
 
-const NewGame = (board, players) => {
-  let stage = "setup";
-  const getStage = () => {
-    return stage;
+const NewGame = (board, playerName) => {
+
+  const gameStage = () => {
+    let stage = "setup";
+    const getStage = () => stage;
+    const nextStage = () => {
+      stage = "gameplay";
+      return stage;
+    };
+
+    return { getStage, nextStage };
   };
 
-  const playerOne = playerOneName ? Player(playerOneName) : null;
-  const playerTwo = playerTwoName
-    ? Player(playerTwoName)
-    : Object.assign(Player("Computer Player"), ComputerMover());
+  const player = Player(playerName);
+  
   const playerOneBoard = newBoard(playerOne);
   const playerTwoBoard = newBoard(playerTwo);
 
