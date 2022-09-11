@@ -1,29 +1,20 @@
-const NewShip = (shipName, coordinates) => {
+const NewShip = (shipName, length) => {
   const name = shipName;
 
-  const hitMap = {};
+  const shipLength = length;
 
-  coordinates.foreach((coord) => {
-    hitMap[coord] = null;
-  });
+  let hitCount = 0;
 
   const getName = () => {
     return name;
   };
 
   const isSunk = () => {
-    let sunk = false;
-
-    for (let coordinate in hitMap) {
-      if (hitMap[coordinate]) {
-        sunk = true;
-      }
-    }
-    return sunk;
+    return hitCount === shipLength ? true : false;
   };
 
-  const directHit = (coordinate) => {
-
+  const directHit = () => {
+    hitCount += 1;
   };
 
   return {
