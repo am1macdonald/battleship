@@ -1,4 +1,4 @@
-const NewShip = (shipName, length) => {
+const newShip = (shipName, length) => {
   const name = shipName;
 
   const shipLength = length;
@@ -25,4 +25,4 @@ const NewShip = (shipName, length) => {
   };
 };
 
-export default NewShip;
+export default newShip;
