@@ -1,0 +1,37 @@
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 30vh;
+  width: clamp(300px, 50vw, 450px);
+
+  background: rgba(0, 0, 0, 0.8);
+
+  border-radius: 5px;
+}
+
+.popupFont {
+  font-size: 1rem;
+}
+
+.button {
+  cursor: pointer;
+  width: auto;
+
+  padding: 1vmin 2vmin;
+
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.5rem;
+
+  background: rgba(255, 251, 0, 0.8);
+  color: black;
+
+  border: none;
+  border-radius: 5px;
+}

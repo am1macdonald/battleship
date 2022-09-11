@@ -2,12 +2,10 @@
 * {
   color: white;
 }
-
 body {
   overflow: auto;
   font-family: "Roboto", sans-serif;
 }
-
 nav {
   box-sizing: border-box;
 
@@ -17,7 +15,6 @@ nav {
 
   background: rgba(0, 0, 0, 0.75);
 }
-
 h1 {
   font-size: clamp(1.5rem, 5vmin, 4rem);
 }
@@ -46,16 +43,13 @@ button {
   border: none;
   border-radius: 5px;
 }
-
 .main {
   width: 100vw;
   height: 87vh;
 }
-
 .footer {
   height: 5vh;
 }
-
 .center {
   display: flex;
   justify-content: center;
