@@ -15,6 +15,7 @@ const NewShip = (shipName, length) => {
 
   const directHit = () => {
     hitCount += 1;
+    return "hit";
   };
 
   return {
